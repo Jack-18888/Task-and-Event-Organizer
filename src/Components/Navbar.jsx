@@ -4,12 +4,12 @@ function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-10 pt-[15%] items-center top-0 left-0 bg-blue-950 h-full w-1/6">
       <button
         onClick={() => {
           navigate("/profile");
         }}
-        className="bg-blue-500 w-24 h-12 rounded-lg hover:bg-blue-700 transition-colors duration-100"
+        className="text-white text-2xl hover:bg-blue-900 active:bg-blue-800 w-full h-15"
       >
         Profile
       </button>
@@ -17,7 +17,7 @@ function Navbar() {
         onClick={() => {
           navigate("/");
         }}
-        className="bg-blue-500 w-24 h-12 rounded-lg hover:bg-blue-700 transition-colors duration-100"
+        className="text-white text-2xl hover:bg-blue-900 active:bg-blue-800 w-full h-15"
       >
         Dashboard
       </button>
@@ -25,7 +25,7 @@ function Navbar() {
         onClick={() => {
           navigate("/tasks");
         }}
-        className="bg-blue-500 w-24 h-12 rounded-lg hover:bg-blue-700 transition-colors duration-100"
+        className="text-white text-2xl hover:bg-blue-900 active:bg-blue-800 w-full h-15"
       >
         Tasks
       </button>
@@ -33,7 +33,7 @@ function Navbar() {
         onClick={() => {
           navigate("/calendar");
         }}
-        className="bg-blue-500 w-24 h-12 rounded-lg hover:bg-blue-700 transition-colors duration-100"
+        className="text-white text-2xl hover:bg-blue-900 active:bg-blue-800 w-full h-15"
       >
         Calendar
       </button>

@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 function TasksPage() {
 
   return (
-    <div>
+    <div className="flex h-screen">
       <Navbar />
       Task List
     </div>

@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 function CalendarPage() {
 
   return (
-    <div>
+    <div className="flex h-screen">
       <Navbar />
       Calendar
     </div>

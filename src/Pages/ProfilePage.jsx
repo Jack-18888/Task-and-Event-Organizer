@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 function ProfilePage() {
 
   return (
-    <div> 
+    <div className="flex h-screen"> 
       <Navbar />
       Profile Page
     </div>

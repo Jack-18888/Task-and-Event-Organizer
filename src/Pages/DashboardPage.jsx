@@ -10,12 +10,16 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex h-screen">
       <Navbar />
-      Dashboard
-      <button 
-      className="bg-blue-500 w-24 h-12 rounded-lg hover:bg-blue-700 transition-colors duration-100"
-      onClick={logOut}>Log Out</button>
+      <div className="flex-1 flex flex-col items-center justify-center">
+        Dashboard
+        <button 
+          className="bg-blue-500 w-24 h-12 rounded-lg hover:bg-blue-700 transition-colors duration-100"
+          onClick={logOut}>
+          Log Out
+        </button>
+      </div>
     </div>
   )
 }
