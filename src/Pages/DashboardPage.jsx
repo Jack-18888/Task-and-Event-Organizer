@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function Dashboard() {
 
   return (
     <div className="flex flex-col items-center gap-2">
+      <Navbar />
       Dashboard
       <button 
       className="bg-blue-500 w-24 h-12 rounded-lg hover:bg-blue-700 transition-colors duration-100"

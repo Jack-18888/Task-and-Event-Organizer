@@ -1,7 +1,12 @@
+import Navbar from "../Components/Navbar";
+
 function TasksPage() {
 
   return (
-    <div>Task List</div>
+    <div>
+      <Navbar />
+      Task List
+    </div>
   );
 }
 

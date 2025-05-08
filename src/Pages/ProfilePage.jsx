@@ -1,7 +1,12 @@
+import Navbar from "../Components/Navbar";
+
 function ProfilePage() {
 
   return (
-    <div>Profile Page</div>
+    <div> 
+      <Navbar />
+      Profile Page
+    </div>
   );
 }
 

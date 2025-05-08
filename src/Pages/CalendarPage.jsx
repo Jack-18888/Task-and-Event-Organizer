@@ -1,7 +1,12 @@
+import Navbar from "../Components/Navbar";
+
 function CalendarPage() {
 
   return (
-    <div>Calendar</div>
+    <div>
+      <Navbar />
+      Calendar
+    </div>
   );
 }
 
