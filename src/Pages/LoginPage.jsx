@@ -2,8 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
-  const [username, setUsername] = useState('');
+function Login({ onLogin, username, setUsername }) {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -15,14 +14,16 @@ function Login() {
         password,
       });
       localStorage.setItem('token', data.token);
+      onLogin(data.token);
       navigate('/');
     } catch (err) {
+      console.log(err);
       alert(err.response.data.message);
     }
   };
 
   function goToRegister() {
-    navigate('/register')
+    navigate('/register');
   }
 
   return (

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 
-function Dashboard() {
+function DashboardPage() {
   const navigate = useNavigate();
 
   function logOut() {
@@ -24,4 +24,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard;
+export default DashboardPage;
