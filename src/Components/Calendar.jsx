@@ -15,8 +15,11 @@ function Calendar({ events, setRenderedEvents }) {
         let currDate = new Date(year, month, i + 1);
         dates.push({
           date: currDate,
-          events: events.filter((event) => sameDate(event.date, currDate)),
-        });
+          events: events.filter((event) => {
+            const startTimeList = event.start_time.split("T");
+            const eventDate = new Date(startTimeList[0]);
+            return sameDate(eventDate, currDate);
+        })});
       }
       setDateList(dates);
     }
