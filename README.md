@@ -83,9 +83,9 @@ src/
 
 ## 📸 Screenshots
 
-| Login Page              | Dashboard Page              |
+| Task List Page          | Calendar Page              |
 | ----------------------- | --------------------------- |
-| ![](./assets/login.png) | ![](./assets/dashboard.png) |
+| ![](./assets/tasks.png) | ![](./assets/calendar.png) |
 
 ---
 
