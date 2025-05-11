@@ -5,12 +5,14 @@ import isTokenExpired from "./utils/isTokenExpired";
 import Login from "./Pages/LoginPage";
 import Register from "./Pages/RegisterPage";
 import Dashboardpage from "./Pages/DashboardPage";
-import CalendarPage from "./Pages/CalendarPage";
+import CalendarPage from "./Pages/calendar/CalendarPage";
 import ProfilePage from "./Pages/ProfilePage";
 import TasksPage from "./Pages/tasks/TasksPage";
 import AddTaskPage from "./Pages/tasks/AddTaskPage";
 import "./App.css";
 import EditTaskPage from "./Pages/tasks/EditTaskPage";
+import AddEventPage from "./Pages/calendar/AddEventPage";
+import EditEventPage from "./Pages/calendar/EditEventPage";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -66,6 +68,14 @@ function App() {
     setTasks(tasks => tasks.map(task => task.id == id ? newTask : task));
   }
 
+  function handleAddEvent(event) {
+    setEvents(events => [...events, event]);
+  }
+
+  function handleEditEvent(id, newEvent) {
+    setEvents(events => events.map(event => event.id == id ? newEvent : event));
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -114,6 +124,26 @@ function App() {
           element={
             !expired && token ? (
               <CalendarPage events={events} setEvents={setEvents} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/events/add"
+          element={
+            !expired && token ? (
+              <AddEventPage addEvent={handleAddEvent} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/events/edit/:id"
+          element={
+            !expired && token ? (
+              <EditEventPage editEvent={handleEditEvent} />
             ) : (
               <Navigate to="/login" />
             )
