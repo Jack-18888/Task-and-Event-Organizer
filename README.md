@@ -6,6 +6,8 @@ Here's a draft `README.md` for your **personal organizer frontend** project. It 
 
 This is a React-based personal organizer web application designed to help users manage their **tasks**, **calendar events**, and **profile**, all within a responsive and secure interface. The backend is assumed to be running locally (default: `http://localhost:5000`).
 
+The corresponding server is located at https://github.com/Jack-18888/Task-and-Event-Organizer-Server
+
 ## 🚧 Project Status
 
 🔧 **Work in progress** — Core features are implemented but not fully polished. UI and component coverage are evolving. Contributions and refinements are ongoing.
