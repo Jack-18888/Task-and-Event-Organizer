@@ -143,7 +143,7 @@ function App() {
           path="/events/edit/:id"
           element={
             !expired && token ? (
-              <EditEventPage editEvent={handleEditEvent} />
+              <EditEventPage editEvent={handleEditEvent} events={events} />
             ) : (
               <Navigate to="/login" />
             )

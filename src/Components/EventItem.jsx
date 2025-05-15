@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 function EventItem({ event, id, deleteEvent }) {
+
+  const navigate = useNavigate();
 
   function getEventDateString(event) {
     const startTimeList = event.start_time.split("T");
     const date = new Date(startTimeList[0]);
-    return date.toLocaleDateString();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // months are 0-based
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
   }
 
   function getTime(time) {
@@ -28,7 +35,7 @@ function EventItem({ event, id, deleteEvent }) {
       <td className="px-6 py-4">{getTime(event.end_time)}</td>
       <td className="px-6 py-4 text-right">
         <button
-          href="#"
+          onClick={() => navigate(`/events/edit/${event.id}`)}
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
           Edit
