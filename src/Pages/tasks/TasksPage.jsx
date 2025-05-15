@@ -14,7 +14,7 @@ function TasksPage({ tasks, setTasks }) {
   return (
     <div className="flex h-screen">
       <Navbar />
-      <div className="flex flex-col w-full items-center gap-5 pt-24">
+      <div className="flex flex-col items-center gap-5 pt-24 flex-1">
         <h1 className="mb-4 text-4xl font-extrabold"> Task List </h1>
         <TaskList tasks={tasks} deleteTask={handleDeleteTask} doneTask={handleDoneTask}/>
       </div>
