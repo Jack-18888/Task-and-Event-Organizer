@@ -93,7 +93,6 @@ src/
 
 ## 📝 TODO
 
-* [ ] Complete Add/Edit Event UI
 * [ ] Add persistent user profile editing
 * [ ] Improve error handling & form validation
 * [ ] Add loading states and better UX feedback
