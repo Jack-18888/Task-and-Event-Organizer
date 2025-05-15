@@ -1,4 +1,4 @@
-function EventItem({ event, id }) {
+function EventItem({ event, id, deleteEvent }) {
 
   function getEventDateString(event) {
     const startTimeList = event.start_time.split("T");
@@ -27,12 +27,18 @@ function EventItem({ event, id }) {
       <td className="px-6 py-4">{getTime(event.start_time)}</td>
       <td className="px-6 py-4">{getTime(event.end_time)}</td>
       <td className="px-6 py-4 text-right">
-        <a
+        <button
           href="#"
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
           Edit
-        </a>
+        </button>
+        <button
+          onClick={deleteEvent}
+          className="font-medium text-red-600 dark:text-red-500 hover:underline"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );
