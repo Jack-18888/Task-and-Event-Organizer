@@ -14,6 +14,8 @@ import EditTaskPage from "./Pages/tasks/EditTaskPage";
 import AddEventPage from "./Pages/calendar/AddEventPage";
 import EditEventPage from "./Pages/calendar/EditEventPage";
 
+const APIendpoint = "http://localhost:5000";
+
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const expired = isTokenExpired(token);
@@ -32,7 +34,7 @@ function App() {
     if (!token || isTokenExpired(token)) return;
 
     axios
-      .get("http://localhost:5000/tasks", {
+      .get(`${APIendpoint}/tasks`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -46,7 +48,7 @@ function App() {
       });
 
     axios
-      .get("http://localhost:5000/events", {
+      .get(`${APIendpoint}/events`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -61,15 +63,63 @@ function App() {
   }, [token]);
 
   function handleAddTask(task) {
-    setTasks(tasks => [...tasks, task]);
+    axios.post(`${APIendpoint}/tasks`, task, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      setTasks(tasks => [...tasks, response.data]);
+    })
+    .catch((error) => console.log(error));
+  }
+
+  function handleDeleteTask(id) {
+    axios.delete(`${APIendpoint}/tasks/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        setTasks(tasks => tasks.filter(task => task.id != id));
+      } else {
+        console.log(response);
+      }
+    })
+    .catch((error) => console.error('Delete failed:', error));
   }
 
   function handleEditTask(id, newTask) {
-    setTasks(tasks => tasks.map(task => task.id == id ? newTask : task));
+    axios.put(`${APIendpoint}/tasks/${id}`, newTask, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        setTasks(tasks => tasks.map(task => task.id == id ? response.data : task));
+      } else {
+        console.log(response.data);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
   function handleAddEvent(event) {
-    setEvents(events => [...events, event]);
+    axios.post(`${APIendpoint}/events`, event, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => setEvents(events => [...events, response]))
+    .catch((error) => console.log(error));
   }
 
   function handleEditEvent(id, newEvent) {
@@ -93,7 +143,7 @@ function App() {
           path="/tasks"
           element={
             !expired && token ? (
-              <TasksPage tasks={tasks} setTasks={setTasks} />
+              <TasksPage tasks={tasks} deleteTask={handleDeleteTask} setTasks={setTasks} />
             ) : (
               <Navigate to="/login" />
             )

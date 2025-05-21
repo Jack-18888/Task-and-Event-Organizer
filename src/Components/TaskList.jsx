@@ -5,6 +5,10 @@ const tableHeaders = ["Title", "Deadline", "Status", "Actions"];
 function TaskList({ tasks, deleteTask, doneTask }) {
   const navigate = useNavigate();
 
+  function getDate(dueDate) {
+    return dueDate.split("T")[0];
+  }
+
   return (
     <div className="flex flex-col items-center gap-5">
       <table className="min-w-4xl divide-y divide-gray-200 dark:divide-neutral-700">
@@ -31,7 +35,7 @@ function TaskList({ tasks, deleteTask, doneTask }) {
                 {task.title}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-mid text-gray-800 dark:text-neutral-200">
-                {task.due_date}
+                {getDate(task.due_date)}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-mid text-sm font-medium">
                 {task.completed ? "Completed" : "Pending"}

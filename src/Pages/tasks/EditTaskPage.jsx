@@ -8,14 +8,14 @@ function EditTaskPage({ tasks, editTask }) {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState(task?.title || "");
-  const [dueDate, setDueDate] = useState(task?.due_date || "");
+  const [dueDate, setDueDate] = useState(task?.due_date.split("T")[0] || "");
   const [completed, setCompleted] = useState(task?.completed || false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTask = {
       "id": taskId,
-      "due_date": dueDate,
+      "dueDate": `${dueDate}T00:00:00.000Z`,
       "title": title,
       "completed": completed
     }

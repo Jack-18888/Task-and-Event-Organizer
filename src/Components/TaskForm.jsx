@@ -11,7 +11,7 @@ function TaskForm({ addTask }) {
     const newTask = {
       id: Date.now(),
       title,
-      due_date: dueDate,
+      dueDate: dueDate,
       completed: false,
     };
     addTask(newTask);
